@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <!-- CSS only -->
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <!-- 0. Master -->
+    <div class="container">
+      <!-- 1. Title -->
+      <div class="card">
+        <div class="card-body">TO DO LIST</div>
+      </div>
+      <!-- 2. Checkbox & Isi Konten -->
+      <div class="input-group mb-3">
+        <div class="input-group-text">
+          <input
+            class="form-check-input mt-0"
+            type="checkbox"
+            value=""
+            aria-label="Checkbox for following text input"
+          />
+        </div>
+        <input
+          type="text"
+          class="form-control"
+          aria-label="Text input with checkbox"
+          placeholder="Put some to do ..."
+          id="form"
+          ;
+        />
+        <!-- submit -->
+        <div class="submit">
+          <button
+            id="button"
+            class="btn btn-outline-primary"
+            onClick="button()"
+          >
+            Primary
+          </button>
+        </div>
+      </div>
+      <!-- 3. Hasil  -->
+      <div class="submit">
+        <input
+          type="text"
+          class="form-control"
+          aria-label="Text input with checkbox"
+          placeholder="Put some to do ..."
+          id="submitArea"
+          ;
+        />
+      </div>
+      <p>
+        <!-- 4. Hasil Inner html -->
+      </p>
+
+      <div class="HasilInner">
+        <p id="coba"></p>
+      </div>
+    </div>
+
+    <script>
+      // function button() {
+      //   let getText = "";
+      //   let x = document.getElementById("button");
+      //   let submit = document.getElementById("submit");
+      //   if (x == true) {
+      //     submit.style.visibility = "visible";
+      //   }
+      // }
+
+      function button() {
+        let getText = document.getElementById("form").value;
+        if (getText === "") {
+          alert("Input something");
+          return 0;
+        }
+        let submit = (document.getElementById("submitArea").value = getText);
+        let getHasil = (document.getElementById("coba").value = getText);
+
+        // //versi input box
+        // //  append child textbox
+        // let node = document.createElement("p");
+        // let input = document.createElement("input");
+        // input.classList.add("form-control");
+        // node.appendChild(input);
+        // let appendInput = document.getElementById("coba").appendChild(node);
+        // //
+
+        // // Versi li//
+        // let node = document.createElement("p");
+        // let input = document.createTextNode(getText);
+
+        // node.appendChild(input);
+        // let appendInput = document.getElementById("coba").appendChild(node);
+        // ////
+
+        // versi adjacent
+        let ulElement = document.getElementById("coba");
+        let newTodo =
+          "<p><span onclick=toggle(this)>" +
+          getText +
+          "</span>" +
+          "<span onclick=toggleDelete(this)> [x] </span>" +
+          "</p>";
+        ulElement.insertAdjacentHTML("afterbegin", newTodo);
+
+        //
+        setTimeout(function () {
+          getText = document.getElementById("form").value = "";
+        });
+      }
+      // function enter() {
+      //   let input = document.querySelector("form");
+      //   input.addEventListener("keyup", (keyParam) => {
+      //     if (keyParam.key === 13) {
+      //       console.log(keyParam.target.value);
+      //     }
+      //   });
+      // }
+      //span toggle//
+      function toggle(x) {
+        x.classList.toggle("done");
+      }
+      function toggleDelete(x) {
+        x.parentElement.remove();
+      }
+    </script>
+    <!-- JavaScript Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
+
+<!-- !DICTIONARY! -->
+<!-- html dom -->
+<!-- toggle -->
+<!-- insertAdjacent -->
+<!-- span -->
+<!-- parent Element -->
